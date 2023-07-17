@@ -3,7 +3,7 @@ import { getArticles } from "../../api"
 import SingleArticle from "./SingleArticle"
 
 const ArticleList = ()=>{
-const [articles, setArticles] = useState([])
+    const [articles, setArticles] = useState([])
 const [isLoading, setIsLoading] = useState(true)
 const[error, setError] = useState(true)
 
