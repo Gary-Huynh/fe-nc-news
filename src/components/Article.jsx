@@ -42,7 +42,7 @@ const handleClick = (e)=>{
             .catch((err)=>{
                 setUserVotes((currentVotes)=>{
                     if(e.target.innerText === "👍") return currentVotes - 1;
-                    else{currentVotes + 1};
+                    else{return currentVotes + 1};
                 })
                 setVoteError(true)
             })
@@ -59,7 +59,7 @@ if(error){return <h1>Something went wrong try again later 🙄</h1>}
         <h3> Author: {article.author}</h3>
         <p>{article.body}</p>
         <p>created at: {article.created_at}</p>
-        <p>Likes: {article.votes + userVotes}</p>
+        <p>Likes: {userVotes + article.votes  }</p>
         <button onClick={handleClick} disabled={userVotes !==0}>👍</button>
         <button onClick={handleClick} disabled={userVotes !==0}>👎</button>
 
