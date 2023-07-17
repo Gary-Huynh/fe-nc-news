@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import { getArticles } from "../../api"
 import SingleArticle from "./SingleArticle"
 
-const ArticleList = ()=>{
-const [articles, setArticles] = useState([])
+const ArticleList = ({articles,setArticles})=>{
+
 const [isLoading, setIsLoading] = useState(true)
 const[error, setError] = useState(true)
 
