@@ -23,3 +23,11 @@ export const getComments = ({article_id})=>{
     })
 }
 
+export const patchArticle= ({article_id})=>{
+    const patchArticleBody = {
+        inc_votes: 1
+    }
+    return newsApi.patch(`articles/${article_id}`,patchArticleBody).then((res)=>{
+        return res.data
+    })
+}
