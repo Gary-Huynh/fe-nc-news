@@ -7,18 +7,26 @@ const Article = () =>{
 const [article, setArticle] = useState()
 const article_id = useParams();
 const [isLoading, setIsLoading] = useState(true)
-
+const[error, setError] = useState(true)
 useEffect(()=>{
     setIsLoading(true)
+    setError(true)
 
     getArticle(article_id).then((res)=>{
 
         setArticle(res.article)
         setIsLoading(false)
+        setError(false)
+    })
+    .catch(err=>{
+        setIsLoading(false)
+        setError(true)
+        console.log(error)
     })
 },[])
 
 if(isLoading) {return <h1>Loading now...</h1>}
+if(error){return <h1>Something went wrong try again later 🙄</h1>}
     return(
         <div>
 
