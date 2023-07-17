@@ -23,3 +23,17 @@ export const getComments = ({article_id})=>{
     })
 }
 
+export const postComment = ({article_id},body) =>{
+
+    const postCommentBody = {
+        username: body.username,
+        body:body.body,
+    }
+
+    return newsApi.post(`/articles/${article_id}/comments`,postCommentBody).then((res)=>{
+
+        return res
+    })
+}
+
+
