@@ -23,9 +23,10 @@ export const getComments = ({article_id})=>{
     })
 }
 
-export const patchArticle= ({article_id})=>{
+export const patchArticle= ({article_id},upOrDown)=>{
+
     const patchArticleBody = {
-        inc_votes: 1
+        inc_votes: upOrDown
     }
     return newsApi.patch(`articles/${article_id}`,patchArticleBody).then((res)=>{
         return res.data

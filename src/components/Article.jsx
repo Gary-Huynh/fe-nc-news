@@ -27,15 +27,22 @@ useEffect(()=>{
 
     })
 },[])
-const handleClick = ()=>{
+const handleClick = (e)=>{
+    let upOrDown = 0
     setVoteError(false)
     setUserVotes((currentVotes)=>{
-        return currentVotes + 1;
+        if(e.target.innerText === "👍") 
+            {upOrDown = 1
+            return currentVotes + 1}
+        else {
+            upOrDown = -1
+            return currentVotes - 1;}
     })
-        patchArticle(article_id)
+        patchArticle(article_id, upOrDown)
             .catch((err)=>{
                 setUserVotes((currentVotes)=>{
-                    return currentVotes - 1
+                    if(e.target.innerText === "👍") return currentVotes - 1;
+                    else{currentVotes + 1};
                 })
                 setVoteError(true)
             })
@@ -53,7 +60,9 @@ if(error){return <h1>Something went wrong try again later 🙄</h1>}
         <p>{article.body}</p>
         <p>created at: {article.created_at}</p>
         <p>Likes: {article.votes + userVotes}</p>
-        <button onClick={handleClick} disabled={userVotes > 0}>🐉</button>
+        <button onClick={handleClick} disabled={userVotes !==0}>👍</button>
+        <button onClick={handleClick} disabled={userVotes !==0}>👎</button>
+
         {voteError? <p>Error please try again later</p> : null}
         <p>Comment Count:  {article.comment_count}</p>
         <br/> <br/> <br/> <br/>
