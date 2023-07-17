@@ -7,7 +7,7 @@ const Article = () =>{
 const [article, setArticle] = useState()
 const article_id = useParams();
 const [isLoading, setIsLoading] = useState(true)
-const[error, setError] = useState(true)
+const[error, setError] = useState(false)
 useEffect(()=>{
     setIsLoading(true)
     setError(true)
@@ -21,14 +21,14 @@ useEffect(()=>{
     .catch(err=>{
         setIsLoading(false)
         setError(true)
-        console.log(error)
+
     })
 },[])
 
 if(isLoading) {return <h1>Loading now...</h1>}
 if(error){return <h1>Something went wrong try again later 🙄</h1>}
     return(
-        <div>
+        <article>
 
         <h2>{article.title}</h2>
         <img width="600px" src={article.article_img_url} alt="image describing the article"/>
@@ -39,7 +39,7 @@ if(error){return <h1>Something went wrong try again later 🙄</h1>}
         <p>Votes: {article.votes}</p>
         <p>Comment Count:  {article.comment_count}</p>
 
-        </div>
+        </article>
     )
 }
 
