@@ -1,4 +1,4 @@
-const SingleArticle = ({article,setArticle})=>{
+const SingleArticle = ({article})=>{
 
     return (
         <div className="singleArticle">

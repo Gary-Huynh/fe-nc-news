@@ -4,17 +4,33 @@ import SingleArticle from "./SingleArticle"
 
 const ArticleList = ()=>{
 const [articles, setArticles] = useState([])
+const [isLoading, setIsLoading] = useState(true)
+const[error, setError] = useState(true)
+
+
+
     useEffect(()=>{
+        setIsLoading(true)
+        setError(true)
 
         getArticles()
         .then((res)=>{
             setArticles(res)
+            setIsLoading(false)
+            setError(false)
+        })
+        .catch(err =>{
+            setIsLoading(false)
+            setError(true)
+            console.log(err.message)
         })
 
 
 
     },[])
 
+    if(isLoading) {return <h1>Loading now...</h1>}
+    if(error){return <h1>Something went wrong try again later 🙄</h1>}
 
 
     return (
