@@ -20,8 +20,9 @@ const Comments = ({article_id})=>{
             setError(true)
         })
     },[])
-    if(comments.length === 0){return <h3>no comments ☹</h3>}
+
     if(isLoading) {return <h1>Loading now...</h1>}
+    if(comments.length === 0){return <h3>no comments ☹</h3>}
     if(error){return <h1>Something went wrong try again later 🙄</h1>}
 return(
     <section>
