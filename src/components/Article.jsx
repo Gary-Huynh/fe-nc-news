@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import { getArticle } from "../../api";
+import Comments from "./Comments";
 
 
 const Article = () =>{
@@ -38,7 +39,10 @@ if(error){return <h1>Something went wrong try again later 🙄</h1>}
         <p>created at: {article.created_at}</p>
         <p>Votes: {article.votes}</p>
         <p>Comment Count:  {article.comment_count}</p>
+        <br/> <br/> <br/> <br/>
+        <h3>Comments</h3>
 
+        <section>{<Comments article_id={article_id} />}</section>
         </article>
     )
 }
