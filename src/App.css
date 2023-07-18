@@ -23,3 +23,8 @@
 
   border-top: 2px blue solid
 }
+
+.image{
+  border-bottom: 5px yellow solid;
+  padding-bottom: 40px
+}

@@ -52,3 +52,20 @@ export const getTopics = ()=>{
         return res.data
     })
 }
+
+
+export const deleteComment = (comment_id)=>{
+
+    return newsApi.delete(`/comments/${comment_id}`).then((res)=>{
+        console.log(res)
+        return res
+    })
+
+
+}
+
+export const getUsers = ()=>{
+    return newsApi.get("/users").then((res)=>{
+            return res.data
+    })
+}

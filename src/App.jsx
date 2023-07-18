@@ -8,6 +8,7 @@ import ArticleList from './components/ArticleList'
 import Article from './components/Article'
 import TopicList from './components/TopicsList'
 import Topic from './components/Topics'
+import UserList from './components/UserList'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path = "/articles/:article_id" element={<Article />} />
         <Route path = "/topics" element={<TopicList/>} />
         <Route path="/topics/:topic_name" element={<Topic />}/>
+        <Route path = "/users" element={<UserList />} />
 
 
 

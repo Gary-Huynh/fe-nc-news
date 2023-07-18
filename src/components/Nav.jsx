@@ -15,6 +15,9 @@ const Nav = ()=>{
                 <Link className="link" to = {"/topics"}>
                     <button>Topics</button>
                 </Link>
+                <Link className="link" to = {"/users"}>
+                    <button>Profile</button>
+                </Link>
             </li>
          </ul>
     </nav>
