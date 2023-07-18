@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
-import { getArticle } from "../../api";
+import { getArticle, patchArticle } from "../../api";
 import Comments from "./Comments";
 
 
@@ -9,6 +9,8 @@ const [article, setArticle] = useState()
 const article_id = useParams();
 const [isLoading, setIsLoading] = useState(true)
 const[error, setError] = useState(false)
+const [userVotes, setUserVotes] =useState(0)
+const [voteError, setVoteError] = useState(false)
 useEffect(()=>{
     setIsLoading(true)
     setError(true)
@@ -25,6 +27,26 @@ useEffect(()=>{
 
     })
 },[])
+const handleClick = (e)=>{
+    let upOrDown = 0
+    setVoteError(false)
+    setUserVotes((currentVotes)=>{
+        if(e.target.innerText === "👍") 
+            {upOrDown = 1
+            return currentVotes + 1}
+        else {
+            upOrDown = -1
+            return currentVotes - 1;}
+    })
+        patchArticle(article_id, upOrDown)
+            .catch((err)=>{
+                setUserVotes((currentVotes)=>{
+                    if(e.target.innerText === "👍") return currentVotes - 1;
+                    else{return currentVotes + 1};
+                })
+                setVoteError(true)
+            })
+}
 
 if(isLoading) {return <h1>Loading now...</h1>}
 if(error){return <h1>Something went wrong try again later 🙄</h1>}
@@ -37,7 +59,11 @@ if(error){return <h1>Something went wrong try again later 🙄</h1>}
         <h3> Author: {article.author}</h3>
         <p>{article.body}</p>
         <p>created at: {article.created_at}</p>
-        <p>Votes: {article.votes}</p>
+        <p>Likes: {userVotes + article.votes  }</p>
+        <button onClick={handleClick} disabled={userVotes !==0}>👍</button>
+        <button onClick={handleClick} disabled={userVotes !==0}>👎</button>
+
+        {voteError? <p>Error please try again later</p> : null}
         <p>Comment Count:  {article.comment_count}</p>
         <br/> <br/> <br/> <br/>
         <h3>Comments</h3>
