@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import { getArticle, patchArticle } from "../../api";
 import Comments from "./Comments";
-
+import { UserContext } from "../contexts/UserContext";
 
 const Article = () =>{
+const {user} = useContext(UserContext)
+
 const [article, setArticle] = useState()
 const article_id = useParams();
 const [isLoading, setIsLoading] = useState(true)
@@ -48,6 +50,9 @@ const handleClick = (e)=>{
             })
 }
 
+
+
+
 if(isLoading) {return <h1>Loading now...</h1>}
 if(error){return <h1>Something went wrong try again later 🙄</h1>}
     return(
@@ -66,6 +71,9 @@ if(error){return <h1>Something went wrong try again later 🙄</h1>}
         {voteError? <p>Error please try again later</p> : null}
         <p>Comment Count:  {article.comment_count}</p>
         <br/> <br/> <br/> <br/>
+
+
+
         <h3>Comments</h3>
 
         <section>{<Comments article_id={article_id} />}</section>
