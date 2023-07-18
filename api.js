@@ -46,3 +46,7 @@ export const patchArticle= ({article_id},upOrDown)=>{
         return res.data
     })
 }
+
+export const getArticlesByVotes = (order)=>{
+    return newsApi.get(`/articles?sort_by=votes&order=${order}`)
+}
