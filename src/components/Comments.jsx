@@ -47,12 +47,26 @@ const handleSubmit = (e)=>{
 
 
 const handleClick = (comment)=>{
-    setDeleted(false)
-    setIsLoading(true)
+        setComments((currComments)=>{
+            return (currComments.filter(singleComment=>{
+                if(singleComment.comment_id !== comment.comment_id) {
+                    return singleComment
+                }
+            }))
+        })
+
     deleteComment(comment.comment_id).then(()=>{
-        setDeleted(true)
-        setIsLoading(false)
+
+
             alert ("Comment Deleted")
+    })
+    .catch(err =>{
+        alert("Could not Delete try again later")
+
+            setComments((currComments=>{
+                return [comment, ...currComments]
+            }))
+        
     })
 
 }
