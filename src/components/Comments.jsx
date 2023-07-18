@@ -48,8 +48,10 @@ const handleSubmit = (e)=>{
 
 const handleClick = (comment)=>{
     setDeleted(false)
+    setIsLoading(true)
     deleteComment(comment.comment_id).then(()=>{
         setDeleted(true)
+        setIsLoading(false)
             alert ("Comment Deleted")
     })
 
