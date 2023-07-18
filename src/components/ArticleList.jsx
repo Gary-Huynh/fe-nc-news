@@ -31,37 +31,23 @@ const [order, setOrder] = useState("desc")
     },[])
 
     const handleClick = (e)=>{
+
         if(e.target.textContent === "Sort by comments") 
         {getArticlesByComments(order)
             .then((res)=>{
-                setArticles(res.articles)
-                if(order === "desc") {setOrder("asc")}
-                else {setOrder("desc")}
-            }
-            )
+                setArticles(res.articles)})
         }
-
-        
-        if(e.target.textContent === "Sort by likes")
+        else if(e.target.textContent === "Sort by likes")
          {getArticlesByVotes(order)
             .then((res)=>{
-                setArticles(res.articles)
-                if(order === "asc") {setOrder("desc")}
-                else {setOrder("asc")}
-            }
-            )
+                setArticles(res.articles)})
         }
-        
-        if(e.target.textContent === "Sort by date created") {
-        
-        getArticlesByDate(order)
-        .then((res)=>{
-            setArticles(res.articles)
-            if(order === "asc") {setOrder("desc")}
+        else {getArticlesByDate(order)
+            .then((res)=>{
+                setArticles(res.articles)})
+        }
+        if(order === "asc") {setOrder("desc")}
             else {setOrder("asc")}
-        }
-        )
-        }
     }
 
 
