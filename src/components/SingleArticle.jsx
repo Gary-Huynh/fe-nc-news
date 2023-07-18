@@ -12,6 +12,7 @@ const SingleArticle = ({article})=>{
             <p>Author: {article.author}</p>
             <p>Comments: {article.comment_count}</p>
             <p>Likes: {article.votes}</p>
+            <p>Created at: {article.created_at}</p>
 
         </div>
 

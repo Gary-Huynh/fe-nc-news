@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
-import { getArticles } from "../../api"
+import { getArticles, getArticlesByComments, getArticlesByDate, getArticlesByVotes } from "../../api"
 import SingleArticle from "./SingleArticle"
 
 const ArticleList = ()=>{
-    const [articles, setArticles] = useState([])
+const [articles, setArticles] = useState([])
 const [isLoading, setIsLoading] = useState(true)
-const[error, setError] = useState(true)
+const[error, setError] = useState(false)
+const [order, setOrder] = useState("desc")
 
 
 
@@ -22,12 +23,49 @@ const[error, setError] = useState(true)
         .catch(err =>{
             setIsLoading(false)
             setError(true)
-            console.log(err.message)
+
         })
 
 
 
     },[])
+
+    const handleClick = (e)=>{
+        if(e.target.textContent === "Sort by comments") 
+        {getArticlesByComments(order)
+            .then((res)=>{
+                setArticles(res.articles)
+                if(order === "desc") {setOrder("asc")}
+                else {setOrder("desc")}
+            }
+            )
+        }
+
+        
+        if(e.target.textContent === "Sort by likes")
+         {getArticlesByVotes(order)
+            .then((res)=>{
+                setArticles(res.articles)
+                if(order === "asc") {setOrder("desc")}
+                else {setOrder("asc")}
+            }
+            )
+        }
+        
+        if(e.target.textContent === "Sort by date created") {
+        
+        getArticlesByDate(order)
+        .then((res)=>{
+            setArticles(res.articles)
+            if(order === "asc") {setOrder("desc")}
+            else {setOrder("asc")}
+        }
+        )
+        }
+    }
+
+
+
 
     if(isLoading) {return <h1>Loading now...</h1>}
     if(error){return <h1>Something went wrong try again later 🙄</h1>}
@@ -37,6 +75,23 @@ const[error, setError] = useState(true)
     
     <div>
         <h3 className="articleList">Article List here</h3>
+        <h3>
+            <button onClick={(e)=>{
+                            handleClick(e)
+                        }}>Sort by comments</button>
+        </h3>
+        <h3>
+            <button onClick={(e)=>{
+                            handleClick(e)
+                        }}>Sort by date created</button>
+        </h3>
+        <h3>
+            <button onClick={(e)=>{
+                            handleClick(e)
+                        }}>Sort by likes</button>
+        </h3>
+            {(order==="asc") ? <p>Descending Order</p> : <p>Ascending Order</p>}
+      
         {articles.map((article)=>{
 
             return  <SingleArticle key={article.article_id}  article={article}/>

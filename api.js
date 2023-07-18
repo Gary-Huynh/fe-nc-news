@@ -48,5 +48,22 @@ export const patchArticle= ({article_id},upOrDown)=>{
 }
 
 export const getArticlesByVotes = (order)=>{
-    return newsApi.get(`/articles?sort_by=votes&order=${order}`)
+    return newsApi.get(`/articles?sort_by=votes&order=${order}`).then((res)=>{
+
+        return res.data
+    })
+}
+
+export const getArticlesByComments = (order)=>{
+    return newsApi.get(`/articles?sort_by=comment_count&order=${order}`).then((res)=>{
+
+        return res.data
+    })
+}
+
+export const getArticlesByDate = (order)=>{
+    return newsApi.get(`/articles?sort_by=created_at&order=${order}`).then((res)=>{
+
+        return res.data
+    })
 }
