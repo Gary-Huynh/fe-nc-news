@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
-import { getArticles, getArticlesByComments, getArticlesByDate, getArticlesByVotes } from "../../api"
+import { getArticles,getArticlesSorted } from "../../api"
 import SingleArticle from "./SingleArticle";
 
 
@@ -33,21 +33,13 @@ const [order, setOrder] = useState("desc")
     },[])
 
     const handleClick = (e)=>{
-
-        if(e.target.textContent === "Sort by comments") 
-        {getArticlesByComments(order)
+        let sortBy = ""
+        if(e.target.textContent === "Sort by comments") sortBy="comment_count"
+        else if(e.target.textContent === "Sort by likes") sortBy = "votes"
+        else sortBy = "created_at"
+        getArticlesSorted(sortBy,order)
             .then((res)=>{
                 setArticles(res.articles)})
-        }
-        else if(e.target.textContent === "Sort by likes")
-         {getArticlesByVotes(order)
-            .then((res)=>{
-                setArticles(res.articles)})
-        }
-        else {getArticlesByDate(order)
-            .then((res)=>{
-                setArticles(res.articles)})
-        }
         if(order === "asc") {setOrder("desc")}
             else {setOrder("asc")}
     }
