@@ -6,6 +6,8 @@ import Nav from './components/Nav'
 import Home from './components/Home'
 import ArticleList from './components/ArticleList'
 import Article from './components/Article'
+import TopicList from './components/TopicsList'
+import Topic from './components/Topics'
 
 function App() {
 
@@ -18,7 +20,8 @@ function App() {
         <Route path ="/" element={<Home/>}/>
         <Route path="/articles" element={<ArticleList />}/>
         <Route path = "/articles/:article_id" element={<Article />} />
-
+        <Route path = "/topics" element={<TopicList/>} />
+        <Route path="/topics/:topic_name" element={<Topic />}/>
 
 
 

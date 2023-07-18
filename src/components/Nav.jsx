@@ -6,8 +6,14 @@ const Nav = ()=>{
          <h2>Nav Here</h2>
          <ul>
             <li>
+                <Link className="link" to = {"/"}>
+                    <button>Home</button>
+                </Link>
                 <Link className="link" to = {"/articles"}>
                     <button>Articles</button>
+                </Link>
+                <Link className="link" to = {"/topics"}>
+                    <button>Topics</button>
                 </Link>
             </li>
          </ul>
