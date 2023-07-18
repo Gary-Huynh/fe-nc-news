@@ -69,3 +69,9 @@ export const getUsers = ()=>{
             return res.data
     })
 }
+export const getArticlesSorted = (sort_by,order)=>{
+    return newsApi.get(`/articles?sort_by=${sort_by}&order=${order}`).then((res)=>{
+
+        return res.data
+    })
+}
