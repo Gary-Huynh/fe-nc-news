@@ -8,18 +8,27 @@ import { Link } from "react-router-dom"
 const TopicList = ()=>{
 const [isLoading, setIsLoading] =useState(true)
 const [topics, setTopics] = useState([])
+const[error, setError] = useState(false)
 useEffect(()=>{
     setIsLoading(true)
+    setError(true)
+
     getTopics()
     .then((res)=>{
         setTopics(res.allTopics)
         setIsLoading(false)
+        setError(false)
+    })
+    .catch(err =>{
+        setIsLoading(false)
+        setError(true)
 
     })
     
 },[])
 
 if(isLoading) {return <h1>Loading now...</h1>}
+if(error){return <h1>Something went wrong try again later 🙄</h1>}
 
     return(
         <main>

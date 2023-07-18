@@ -5,7 +5,7 @@ import SingleArticle from "./SingleArticle"
 const ArticleList = ()=>{
     const [articles, setArticles] = useState([])
 const [isLoading, setIsLoading] = useState(true)
-const[error, setError] = useState(true)
+const[error, setError] = useState(false)
 
 
 
@@ -22,7 +22,7 @@ const[error, setError] = useState(true)
         .catch(err =>{
             setIsLoading(false)
             setError(true)
-            console.log(err.message)
+
         })
 
 
