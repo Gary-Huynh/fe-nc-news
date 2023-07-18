@@ -11,7 +11,7 @@ const SingleArticle = ({article})=>{
             <p>Topic: {article.topic}</p>
             <p>Author: {article.author}</p>
             <p>Comments: {article.comment_count}</p>
-            <p>Votes :{article.votes}</p>
+            <p>Likes: {article.votes}</p>
 
         </div>
 
