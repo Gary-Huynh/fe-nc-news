@@ -53,6 +53,22 @@ export const getTopics = ()=>{
     })
 }
 
+
+export const deleteComment = (comment_id)=>{
+
+    return newsApi.delete(`/comments/${comment_id}`).then((res)=>{
+
+        return res
+    })
+
+
+}
+
+export const getUsers = ()=>{
+    return newsApi.get("/users").then((res)=>{
+            return res.data
+    })
+}
 export const getArticlesSorted = (sort_by,order)=>{
     return newsApi.get(`/articles?sort_by=${sort_by}&order=${order}`).then((res)=>{
 

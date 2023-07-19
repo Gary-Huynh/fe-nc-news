@@ -1,4 +1,4 @@
-import { getComments } from "../../api"
+import { deleteComment, getComments } from "../../api"
 import { useEffect, useState, useContext } from "react";
 import { postComment } from "../../api";
 import { UserContext } from "../contexts/UserContext";
@@ -9,6 +9,7 @@ const Comments = ({article_id})=>{
     const[error, setError] = useState(false)
     const [submit, setSubmit] = useState(false)
     const [newComment, setNewComment] = useState({username:`${user}`, body: ""})
+    const [deleted, setDeleted] =useState(false)
     useEffect(()=>{
 
         setIsLoading(true)
@@ -26,8 +27,8 @@ const Comments = ({article_id})=>{
             setIsLoading(false)
             setError(true)
         })
-    },[submit])
-    const handleSubmit = (e)=>{
+    },[submit,deleted])
+const handleSubmit = (e)=>{
         e.preventDefault()
 
         postComment(article_id, newComment).then((returnedComment)=>{
@@ -42,11 +43,38 @@ const Comments = ({article_id})=>{
         
             setSubmit(true)
         })
-
     }
+
+
+const handleClick = (comment)=>{
+        setComments((currComments)=>{
+            return (currComments.filter(singleComment=>{
+                if(singleComment.comment_id !== comment.comment_id) {
+                    return singleComment
+                }
+            }))
+        })
+
+    deleteComment(comment.comment_id).then(()=>{
+
+
+            alert ("Comment Deleted")
+    })
+    .catch(err =>{
+        alert("Could not Delete try again later")
+
+            setComments((currComments=>{
+                return [comment, ...currComments]
+            }))
+        
+    })
+
+}
+
     if(isLoading) {return <h1>Loading now...</h1>}
     if(comments.length === 0){return <h3>no comments ☹</h3>}
     if(error){return <h1>Something went wrong try again later 🙄</h1>}
+
 return(
     <section>
 
@@ -61,6 +89,7 @@ return(
         <button disabled={submit===true}>Post Comment!</button >
         {submit? <p>message posted!</p>:null}
         </form>
+
     {comments.map((comment)=>{
         return( 
         <section className="singleComment" key={comment.comment_id}>
@@ -68,7 +97,13 @@ return(
             <p>Posted by {comment.author}</p>
             <p>Votes: {comment.votes}</p>
             <p>Posted at: {comment.created_at}</p>
+            <button disabled={comment.author !== user} onClick={(e)=>{
+                handleClick(comment)
+
+
+            }} comment={comment}> Delete Comment</button>
         </section>)
+
     })}
     </section>
 )
