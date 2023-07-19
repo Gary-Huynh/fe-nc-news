@@ -9,6 +9,7 @@ const TopicList = ()=>{
 const [isLoading, setIsLoading] =useState(true)
 const [topics, setTopics] = useState([])
 const[error, setError] = useState(false)
+
 useEffect(()=>{
     setIsLoading(true)
     setError(true)
@@ -18,8 +19,10 @@ useEffect(()=>{
         setTopics(res.allTopics)
         setIsLoading(false)
         setError(false)
+
     })
     .catch(err =>{
+        setApiError(err)
         setIsLoading(false)
         setError(true)
 
@@ -34,7 +37,7 @@ if(error){return <h1>Something went wrong try again later 🙄</h1>}
         <main>
 
             {topics.map((topic)=>{
-                return( <Link to={`/topics/${topic.slug}`} key={topic.slug}>
+                return( <Link to={`/topics/${topic.slug}`} key={topic.slug} >
                 <h2 >{topic.slug}</h2> </Link>)
             })}
         </main>

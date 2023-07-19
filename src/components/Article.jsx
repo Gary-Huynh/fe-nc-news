@@ -7,12 +7,14 @@ import { UserContext } from "../contexts/UserContext";
 const Article = () =>{
 const {user} = useContext(UserContext)
 
-const [article, setArticle] = useState()
+const [article, setArticle] = useState();
 const article_id = useParams();
-const [isLoading, setIsLoading] = useState(true)
-const[error, setError] = useState(false)
-const [userVotes, setUserVotes] =useState(0)
-const [voteError, setVoteError] = useState(false)
+const [isLoading, setIsLoading] = useState(true);
+const[error, setError] = useState(false);
+const [userVotes, setUserVotes] =useState(0);
+const [voteError, setVoteError] = useState(false);
+const [apiError, setApiError] = useState(null);
+
 useEffect(()=>{
     setIsLoading(true)
     setError(true)
@@ -24,6 +26,7 @@ useEffect(()=>{
         setError(false)
     })
     .catch(err=>{
+        setApiError(err)
         setIsLoading(false)
         setError(true)
 
@@ -51,7 +54,14 @@ const handleClick = (e)=>{
 }
 
 
-
+if(apiError){
+    return(
+        <main>
+            <p>{apiError.response.status}</p>
+            <p>{apiError.response.data.msg}</p>
+        </main>
+    )
+}
 
 if(isLoading) {return <h1>Loading now...</h1>}
 if(error){return <h1>Something went wrong try again later 🙄</h1>}
