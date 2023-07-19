@@ -49,6 +49,7 @@ export const patchArticle= ({article_id},upOrDown)=>{
 
 export const getTopics = ()=>{
     return newsApi.get("/topics").then((res)=>{
+
         return res.data
     })
 }

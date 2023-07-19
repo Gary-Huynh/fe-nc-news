@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
-import { getArticles,getArticlesSorted } from "../../api"
+import { getArticles,getArticlesSorted, getTopics } from "../../api"
 import SingleArticle from "./SingleArticle";
+import TopicList from "./TopicsList";
 
 
 
 
 const Topic = ()=>{
 const topic = useParams();
+
+
 const [isLoading, setIsLoading] =useState(true)
 const [articles, setArticles] =useState([])
 const[error, setError] = useState(false)
 const [order, setOrder] = useState("desc")
+const [topics, setTopics] = useState([])
+const [apiError, setApiError] = useState(false)
+
 
     useEffect(()=>{
         setIsLoading(true)
@@ -19,6 +25,7 @@ const [order, setOrder] = useState("desc")
 
 
         getArticles()
+
         .then((res)=>{
 
             setArticles(res)
@@ -26,11 +33,34 @@ const [order, setOrder] = useState("desc")
             setError(false)
         })
         .catch(err =>{
+
             setIsLoading(false)
             setError(true)
     
         })
     },[])
+
+    useEffect(()=>{
+        setIsLoading(true)
+        setError(true)
+
+
+        getTopics()
+
+        .then((res)=>{
+
+            setTopics(res.allTopics)
+            setIsLoading(false)
+            setError(false)
+        })
+        .catch(err =>{
+
+            setIsLoading(false)
+            setError(true)
+    
+        })
+    },[])
+
 
     const handleClick = (e)=>{
         let sortBy = ""
@@ -44,17 +74,18 @@ const [order, setOrder] = useState("desc")
             else {setOrder("asc")}
     }
 
+const justTopicName = topics.map((topic)=>{
+    return topic.slug
+})
 
-
-
-
-    
+if(apiError){return <h1>Topic does not exist!</h1>}
 if(isLoading) {return <h1>Loading now...</h1>}
 if(error){return <h1>Something went wrong try again later 🙄</h1>}
 
 return (
+    
     <section>
-                <h3 className="articleList">Article List here</h3>
+                <h3 className="topicList">Articles</h3>
         <h3>
             <button onClick={(e)=>{
                             handleClick(e)
@@ -78,7 +109,7 @@ return (
 
 
 
-
+        {justTopicName.includes(topic.topic_name)===false ? <h1>Topic Does Not Exist!</h1>:null}
         {articles.map((article)=>{
             if(article.topic===topic.topic_name){
                 return <SingleArticle key={article.article_id} article={article}/>
