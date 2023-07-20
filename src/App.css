@@ -119,6 +119,13 @@ nav a:hover {
   font-size: 40px;
   text-align: left;
   padding-left: 7rem;
-  background-color: rgba(153, 205, 50, 0.625);
+
+  background-color: rgba(153, 205, 50, 0.807);
   border-radius: 20px;
+}
+
+.userButton{
+  margin: 10px;
+  margin-left: 45% ;
+  color:white;
 }

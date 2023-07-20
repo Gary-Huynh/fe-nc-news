@@ -10,8 +10,6 @@ const UserList = ()=>{
 const [users, setUsers] = useState([])
 const {user, setUser} = useContext(UserContext)
 
-
-
     useEffect(()=>{
         getUsers()
         .then((res)=>{
@@ -22,16 +20,19 @@ const {user, setUser} = useContext(UserContext)
 return(
     <main >
         <h3 className="userProfile">User Profiles</h3>
+
         {users.map((user)=>{
             return( 
             <section key={user.username} >
             <h2>Username: {user.username}</h2>
             <h3>Full Name: {user.name}</h3>
-            <img onClick={()=>{
+            <button className="userButton" onClick={()=>{
                 setUser(user.username)
                 alert(`logged in as ${user.username}`)
-            }} className="image" width="250px"src={user.avatar_url}/>
-            
+            }}>Login
+            </button>
+            <img className="image" width="250px"src={user.avatar_url}/>
+
             </section>
             )
         })}
