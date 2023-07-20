@@ -52,7 +52,7 @@ const [order, setOrder] = useState("desc")
     return (
     
     <div>
-
+        <h3 className="userProfile">Articles</h3>
         <section className="buttonGroup">
         <h3>
             <button className="button" onClick={(e)=>{

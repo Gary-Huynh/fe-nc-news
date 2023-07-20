@@ -35,7 +35,7 @@ if(error){return <h1>Something went wrong try again later 🙄</h1>}
 
     return(
         <main>
-
+                    <h3 className="userProfile">Topics</h3>
             {topics.map((topic)=>{
                 return( <Link to={`/topics/${topic.slug}`} key={topic.slug} >
                 <h2 >{topic.slug}</h2> </Link>)
