@@ -21,6 +21,7 @@ const {user, setUser} = useContext(UserContext)
 
 return(
     <main >
+        <h3 className="userProfile">User Profiles</h3>
         {users.map((user)=>{
             return( 
             <section key={user.username} >
@@ -29,7 +30,7 @@ return(
             <img onClick={()=>{
                 setUser(user.username)
                 alert(`logged in as ${user.username}`)
-            }} className="image" width="400px"src={user.avatar_url}/>
+            }} className="image" width="250px"src={user.avatar_url}/>
             
             </section>
             )

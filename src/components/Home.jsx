@@ -40,6 +40,8 @@ if(error){return <h1>Something went wrong try again later 🙄</h1>}
 
     return    (     
     <main>
+
+        <h3> Latest News</h3>
     {articles.map((article)=>{
 
         return  <SingleArticle key={article.article_id}  article={article}/>

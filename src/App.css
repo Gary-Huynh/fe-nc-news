@@ -11,7 +11,9 @@
   border: 5px black solid
 }
 .singleArticle{
-  border: 2px yellow solid
+  margin:20px;
+  border-radius: 10px;
+  background-color: rgba(153, 205, 50, 0.181);
 }
 .singleComment {
 
@@ -20,7 +22,7 @@
 }
 
 .image{
-  border-bottom: 5px yellow solid;
+  border-bottom: 5px yellowgreen solid;
   padding-bottom: 40px
 }
 
@@ -31,6 +33,7 @@ nav {
   left: 0;
   width: 100%;
   height: 35px;
+  font-size: 20px;
 }
 
 nav ul {
@@ -49,7 +52,9 @@ nav ul li {
 nav a {
   width: 100%;
   height: 100%;
-  color: rgb(1, 0, 0);
+
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px 0px #000000;
   text-decoration: none;
   font-family: Ubuntu;
   font-size: 1.15em;
@@ -59,7 +64,7 @@ nav a {
 }
 
 nav a:hover {
-  color: rgb(236, 232, 228);
+  color: rgb(0, 0, 0);
 }
 
 .nav-bg {
@@ -78,22 +83,42 @@ nav a:hover {
 	width: 10 rem;
 	height: 2 rem;
   padding: 20px;
-	color: #5c5a5a;
+  padding-top: 5px;
+	color: yellowgreen;
   object-fit: fill;
-	text-shadow: 1px -2px 6px rgba(255, 253, 254, 1);
-  background-image: url(https://cdn.pixabay.com/photo/2016/08/05/09/31/banner-1571858_960_720.jpg);
-  border-radius: 25px;
+
+  border-radius: 100px;
+  background-position: center center;
+  background-repeat: no-repeat;
 
 	
 }
 
 #mainHeader{
   font-size: 4rem;
+  text-align: left;
+  margin-top: 5px;
 }
 #subHeader{
   font-size: 2rem;
+  text-align: left;
 }
 #userHeader{
   font-size: 1.5rem;
   text-align: right;
+}
+
+.buttonGroup{
+  display:flex;
+  justify-content: center;
+  margin:50px;
+  margin-top: 0px;
+}
+
+.userProfile{
+  font-size: 40px;
+  text-align: left;
+  padding-left: 7rem;
+  background-color: rgba(153, 205, 50, 0.625);
+  border-radius: 20px;
 }

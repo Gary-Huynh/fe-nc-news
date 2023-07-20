@@ -52,22 +52,26 @@ const [order, setOrder] = useState("desc")
     return (
     
     <div>
-        <h3 className="articleList">Article List here</h3>
+
+        <section className="buttonGroup">
         <h3>
-            <button onClick={(e)=>{
+            <button className="button" onClick={(e)=>{
                             handleClick(e)
                         }}>Sort by comments</button>
         </h3>
         <h3>
-            <button onClick={(e)=>{
+            <button className="button" onClick={(e)=>{
                             handleClick(e)
                         }}>Sort by date created</button>
         </h3>
         <h3>
-            <button onClick={(e)=>{
+            <button className="button" onClick={(e)=>{
                             handleClick(e)
                         }}>Sort by likes</button>
         </h3>
+        </section>
+
+
             {(order==="asc") ? <p>Descending Order</p> : <p>Ascending Order</p>}
       
         {articles.map((article)=>{
@@ -75,7 +79,7 @@ const [order, setOrder] = useState("desc")
             return  <SingleArticle key={article.article_id}  article={article}/>
         })
         }
-
+        
     </div>
     
     
