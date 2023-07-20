@@ -21,7 +21,8 @@
 .singleComment {
 
 
-  border-top: 2px yellowgreen dashed
+  border-top: 2px yellowgreen dashed;
+
 }
 
 .image{
@@ -194,3 +195,60 @@ nav a:hover {
 .user{
   border-bottom: 5px yellowgreen solid;
 }
+
+.emoji{
+  font-size: 1.8rem;
+}
+
+.commentBox{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+#commentLabel{
+  margin-right: 1rem;
+  font-weight: bold;
+}
+textarea {
+  color: white;
+  width: 15rem;
+  height: 5rem;
+  background-color:rgba(101, 135, 34, 0.106);
+  font-size: 1.5em;
+  font-weight: bold;
+  border: 2px solid yellowgreen;
+  border-radius: 5px;
+ }
+
+ #articleComments{
+  border-top: 3px yellowgreen solid;
+  font-size: 2rem;
+  text-align: left;
+ }
+
+ #countComments{
+  font-size: 1.5rem;
+  text-align: left;
+ }
+
+ #commentBody{
+  font-size: 1.2rem;
+  font-weight: bold;
+ }
+
+ .commentAttributes{
+  margin:0px
+ }
+
+ #articleTitle{
+  font-size: 2rem;
+  border: 3px yellowgreen dashed;
+
+ 
+ }
+
+ #articleBody{
+  font-size: 1.5rem;
+
+
+ }

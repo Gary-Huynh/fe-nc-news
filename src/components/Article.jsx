@@ -68,26 +68,29 @@ if(error){return <h1>Something went wrong try again later 🙄</h1>}
     return(
         <article>
 
-        <h2>{article.title}</h2>
+        <h2 id="articleTitle">{article.title}</h2>
         <img className="articleImage"  src={article.article_img_url} alt="image describing the article"/>
         <h3> Topic: {article.topic}</h3>
         <h3> Author: {article.author}</h3>
-        <p>{article.body}</p>
+        <p id="articleBody">{article.body}</p>
         <p>created at: {article.created_at}</p>
-        <p>Likes: {userVotes + article.votes  }</p>
+        <p className="emoji">❤ {userVotes + article.votes  }</p>
+
         <section className="buttonGroup">
+
         <button onClick={handleClick} disabled={userVotes !==0}>👍</button>
         <button onClick={handleClick} disabled={userVotes !==0}>👎</button>
+        
         </section>
 
         {voteError? <p>Error please try again later</p> : null}
-        <p>Comment Count:  {article.comment_count}</p>
+
         <br/> <br/> <br/> <br/>
 
 
 
-        <h3>Comments</h3>
-
+        <h3 id="articleComments">Comments</h3>
+        <p  id="countComments">Current Comments:  {article.comment_count}</p>
         <section>{<Comments article_id={article_id} />}</section>
         </article>
     )

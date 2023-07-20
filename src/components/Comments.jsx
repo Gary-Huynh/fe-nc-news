@@ -79,24 +79,26 @@ return(
     <section>
 
         <form onSubmit={handleSubmit}>
-        <label htmlFor="postComment">Write your new comment here!  </label>
-        <textarea id="postComment" type="text" value={newComment.body}
+        <div className="commentBox">
+        <label id="commentLabel" htmlFor="postComment">Have some thoughts? </label>
+        <textarea  placeholder="Type here..."  id="postComment" type="text" value={newComment.body}
         onChange={((e)=>{
             setNewComment((currBody)=>{
                 return {...currBody, body:e.target.value}
             })
         })} required/>
-        <button id="postButton" disabled={submit===true}>Post Comment!</button >
+                </div>
+        <button id="postButton"  disabled={submit===true}>Post Comment!</button >
         {submit? <p>message posted!</p>:null}
         </form>
 
     {comments.map((comment)=>{
         return( 
         <section className="singleComment" key={comment.comment_id}>
-            <p>{comment.body}</p>
-            <p>Posted by {comment.author}</p>
-            <p>Votes: {comment.votes}</p>
-            <p>Posted at: {comment.created_at}</p>
+            <p id="commentBody">{comment.body}</p>
+            <p className="commentAttributes">Posted by {comment.author}</p>
+            <p className="commentAttributes">❤ {comment.votes}</p>
+            <p className="commentAttributes">Posted at: {comment.created_at}</p>
             <button id="deleteButton" disabled={comment.author !== user} onClick={(e)=>{
                 handleClick(comment)
 

@@ -104,7 +104,7 @@ return (
         </h3>
         </section>
 
-            {(order==="asc") ? <p>Descending Order</p> : <p>Ascending Order</p>}
+            {(order==="asc") ? <p className="order">Descending Order</p> : <p className="order">Ascending Order</p>}
 
 
 
