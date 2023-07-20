@@ -85,22 +85,25 @@ if(error){return <h1>Something went wrong try again later 🙄</h1>}
 return (
     
     <section>
-                <h3 className="topicList">Articles</h3>
+        <h3 className="userProfile">{topic.topic_name.charAt(0).toUpperCase() + topic.topic_name.slice(1)} Articles</h3>
+        <section className="buttonGroup">
         <h3>
-            <button onClick={(e)=>{
+            <button className="button" onClick={(e)=>{
                             handleClick(e)
                         }}>Sort by comments</button>
         </h3>
         <h3>
-            <button onClick={(e)=>{
+            <button className="button" onClick={(e)=>{
                             handleClick(e)
                         }}>Sort by date created</button>
         </h3>
         <h3>
-            <button onClick={(e)=>{
+            <button className="button" onClick={(e)=>{
                             handleClick(e)
                         }}>Sort by likes</button>
         </h3>
+        </section>
+
             {(order==="asc") ? <p>Descending Order</p> : <p>Ascending Order</p>}
 
 
@@ -110,11 +113,13 @@ return (
 
 
         {justTopicName.includes(topic.topic_name)===false ? <h1>Topic Does Not Exist!</h1>:null}
+        <div className="articleGrid">
         {articles.map((article)=>{
-            if(article.topic===topic.topic_name){
-                return <SingleArticle key={article.article_id} article={article}/>
-            }
-        })}
+
+            return  <SingleArticle key={article.article_id}  article={article}/>
+        })
+        }
+        </div>
     </section>
 
 )

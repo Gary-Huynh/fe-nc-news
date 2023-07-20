@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -11,18 +11,21 @@
   border: 5px black solid
 }
 .singleArticle{
+  padding:5px;
   margin:20px;
   border-radius: 10px;
   background-color: rgba(153, 205, 50, 0.181);
+  margin-bottom: 5rem;
+  padding-top: 3rem;
 }
 .singleComment {
 
 
-  border-top: 2px blue solid
+  border-top: 2px yellowgreen dashed
 }
 
 .image{
-  border-bottom: 5px yellowgreen solid;
+
   padding-bottom: 40px
 }
 
@@ -64,7 +67,7 @@ nav a {
 }
 
 nav a:hover {
-  color: rgb(0, 0, 0);
+  color: yellowgreen
 }
 
 .nav-bg {
@@ -98,6 +101,7 @@ nav a:hover {
   font-size: 4rem;
   text-align: left;
   margin-top: 5px;
+  border-bottom: 3px yellowgreen solid;
 }
 #subHeader{
   font-size: 2rem;
@@ -113,6 +117,7 @@ nav a:hover {
   justify-content: center;
   margin:50px;
   margin-top: 0px;
+  margin-bottom: 25px;
 }
 
 .userProfile{
@@ -127,5 +132,65 @@ nav a:hover {
 .userButton{
   margin: 10px;
   margin-left: 45% ;
-  color:white;
+  color:rgb(56, 58, 59);
+}
+
+.articleImage{
+  width:35rem
+}
+
+.topicLink{
+  font-size: 50px;
+  text-align: left;
+  margin-left: 5rem;
+  list-style:none;
+  margin-bottom: 2rem;
+  border-bottom: 2px yellowgreen dashed;
+}
+
+#deleteButton{
+  display:flex;
+  margin-left: 44rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+#postButton{
+  display:flex;
+  margin-left: 44rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.order{
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: left;
+  padding-left: 20px;
+  margin-top: 0px;
+  border-left: 2px yellowgreen solid;
+}
+
+.articleGrid{
+  display: grid;
+  grid-template-columns: auto auto
+}
+
+.singleArticleImage{
+  width:15rem
+}
+
+
+.singleArticleP{
+  margin: 1px;
+  padding:1px;
+}
+
+.commentsAndLikes{
+  display:flex;
+  justify-content: center;
+
+}
+
+.user{
+  border-bottom: 5px yellowgreen solid;
 }

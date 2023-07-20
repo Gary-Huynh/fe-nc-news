@@ -41,12 +41,15 @@ if(error){return <h1>Something went wrong try again later 🙄</h1>}
     return    (     
     <main>
         <h3 className="userProfile">Home</h3>
-        <h3 className="breakingNews"> Breaking News</h3>
+        <h3 className="order"> Breaking News</h3>
+    
+        <div className="articleGrid">
     {articles.map((article)=>{
 
         return  <SingleArticle key={article.article_id}  article={article}/>
         })
         }
+        </div>
     </main>
     )
    }

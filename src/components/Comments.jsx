@@ -86,7 +86,7 @@ return(
                 return {...currBody, body:e.target.value}
             })
         })} required/>
-        <button disabled={submit===true}>Post Comment!</button >
+        <button id="postButton" disabled={submit===true}>Post Comment!</button >
         {submit? <p>message posted!</p>:null}
         </form>
 
@@ -97,7 +97,7 @@ return(
             <p>Posted by {comment.author}</p>
             <p>Votes: {comment.votes}</p>
             <p>Posted at: {comment.created_at}</p>
-            <button disabled={comment.author !== user} onClick={(e)=>{
+            <button id="deleteButton" disabled={comment.author !== user} onClick={(e)=>{
                 handleClick(comment)
 
 

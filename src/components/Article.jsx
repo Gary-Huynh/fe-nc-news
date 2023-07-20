@@ -69,14 +69,16 @@ if(error){return <h1>Something went wrong try again later 🙄</h1>}
         <article>
 
         <h2>{article.title}</h2>
-        <img width="600px" src={article.article_img_url} alt="image describing the article"/>
+        <img className="articleImage"  src={article.article_img_url} alt="image describing the article"/>
         <h3> Topic: {article.topic}</h3>
         <h3> Author: {article.author}</h3>
         <p>{article.body}</p>
         <p>created at: {article.created_at}</p>
         <p>Likes: {userVotes + article.votes  }</p>
+        <section className="buttonGroup">
         <button onClick={handleClick} disabled={userVotes !==0}>👍</button>
         <button onClick={handleClick} disabled={userVotes !==0}>👎</button>
+        </section>
 
         {voteError? <p>Error please try again later</p> : null}
         <p>Comment Count:  {article.comment_count}</p>

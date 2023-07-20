@@ -72,14 +72,14 @@ const [order, setOrder] = useState("desc")
         </section>
 
 
-            {(order==="asc") ? <p>Descending Order</p> : <p>Ascending Order</p>}
-      
+            {(order==="asc") ? <p className="order">Descending Order</p> : <p className="order">Ascending Order</p>}
+        <div className="articleGrid">
         {articles.map((article)=>{
 
             return  <SingleArticle key={article.article_id}  article={article}/>
         })
         }
-        
+        </div>
     </div>
     
     
