@@ -76,3 +76,9 @@ export const getArticlesSorted = (sort_by,order)=>{
         return res.data
     })
 }
+
+export const getArticlesLatestFive = ()=>{
+    return newsApi.get("/articles?order_by=date&limit=5").then((res)=>{
+        return res.data
+    })
+}

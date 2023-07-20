@@ -6,12 +6,7 @@
 }
 
 
-.navBar{
-  border: 5px green solid 
-}
-.header{
-  border: 5px red solid
-}
+
 .home{
   border: 5px black solid
 }
@@ -27,4 +22,78 @@
 .image{
   border-bottom: 5px yellow solid;
   padding-bottom: 40px
+}
+
+nav {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 35px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: .2em 2em;
+  float: right;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0;
+  padding: .2em .7em;
+}
+
+nav a {
+  width: 100%;
+  height: 100%;
+  color: rgb(1, 0, 0);
+  text-decoration: none;
+  font-family: Ubuntu;
+  font-size: 1.15em;
+  font-weight: lighter;
+  letter-spacing: 1px;
+  transition: .25s ease-in-out;
+}
+
+nav a:hover {
+  color: rgb(236, 232, 228);
+}
+
+.nav-bg {
+  content: '';
+  position: absolute;
+  display: block;
+  top: -100%;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: rgb(50, 50, 50);
+  transition: .45s ease-in-out;
+}
+
+.header {
+	width: 10 rem;
+	height: 2 rem;
+  padding: 20px;
+	color: #5c5a5a;
+  object-fit: fill;
+	text-shadow: 1px -2px 6px rgba(255, 253, 254, 1);
+  background-image: url(https://cdn.pixabay.com/photo/2016/08/05/09/31/banner-1571858_960_720.jpg);
+  border-radius: 25px;
+
+	
+}
+
+#mainHeader{
+  font-size: 4rem;
+}
+#subHeader{
+  font-size: 2rem;
+}
+#userHeader{
+  font-size: 1.5rem;
+  text-align: right;
 }
