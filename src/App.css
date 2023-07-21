@@ -1,5 +1,5 @@
 #root {
-  max-width: 1000px;
+  max-width: 65rem;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -252,3 +252,15 @@ textarea {
 
 
  }
+
+ @media only screen and (max-width: 600px) {
+  .articleGrid{
+    display: grid;
+    grid-template-columns: auto
+  }
+
+  .articleImage{
+    width:20rem
+  }
+
+}

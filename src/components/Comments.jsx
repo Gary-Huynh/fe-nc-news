@@ -2,6 +2,7 @@ import { deleteComment, getComments } from "../../api"
 import { useEffect, useState, useContext } from "react";
 import { postComment } from "../../api";
 import { UserContext } from "../contexts/UserContext";
+import Expand from "./Expand";
 const Comments = ({article_id})=>{
     const {user} = useContext(UserContext)
     const [isLoading, setIsLoading] = useState(true)
@@ -91,7 +92,7 @@ return(
         <button id="postButton"  disabled={submit===true}>Post Comment!</button >
         {submit? <p>message posted!</p>:null}
         </form>
-
+        <Expand description={"comments"}>
     {comments.map((comment)=>{
         return( 
         <section className="singleComment" key={comment.comment_id}>
@@ -107,6 +108,7 @@ return(
         </section>)
 
     })}
+    </Expand>
     </section>
 )
 
