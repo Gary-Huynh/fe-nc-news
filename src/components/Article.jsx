@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom"
 import { getArticle, patchArticle } from "../../api";
 import Comments from "./Comments";
+import { UserContext } from "../contexts/UserContext";
 
 const Article = () =>{
 
@@ -13,6 +14,7 @@ const[error, setError] = useState(false);
 const [userVotes, setUserVotes] =useState(0);
 const [voteError, setVoteError] = useState(false);
 const [apiError, setApiError] = useState(null);
+const {user} = useContext(UserContext)
 
 useEffect(()=>{
     setIsLoading(true)
@@ -77,8 +79,8 @@ if(error){return <h1>Something went wrong try again later 🙄</h1>}
 
         <section className="buttonGroup">
 
-        <button onClick={handleClick} disabled={userVotes !==0}>👍</button>
-        <button onClick={handleClick} disabled={userVotes !==0}>👎</button>
+        <button onClick={handleClick} disabled={userVotes !==0 || user===null}>👍</button>
+        <button onClick={handleClick} disabled={userVotes !==0 || user===null}>👎</button>
         
         </section>
 

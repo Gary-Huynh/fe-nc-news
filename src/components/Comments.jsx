@@ -90,7 +90,7 @@ return(
             })
         })} required/>
                 </div>
-        <button id="postButton"  disabled={submit===true}>Post Comment!</button >
+        <button id="postButton"  disabled={submit===true || user===null}>Post Comment!</button >
         {submit? <p>message posted!</p>:null}
         </form>
         <Expand description={"comments"}>

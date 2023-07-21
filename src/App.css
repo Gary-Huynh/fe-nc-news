@@ -201,13 +201,15 @@ nav a:hover {
 }
 
 .commentBox{
-  display:flex;
+
   justify-content: center;
   align-items: center;
 }
 #commentLabel{
   margin-right: 1rem;
   font-weight: bold;
+  display:block;
+  margin-right: 5rem;
 }
 textarea {
   color: white;
@@ -263,4 +265,19 @@ textarea {
     width:20rem
   }
 
+
+}
+
+#enterUsername{
+  background-color:rgba(101, 135, 34, 0.106);
+  color: white;
+  font-size: 1.2rem;
+}
+
+#userLabel{
+  margin-right: 1rem;
+  font-weight: bold;
+  display:block;
+  margin-right: 2rem;
+  margin-bottom: 0.5rem;
 }

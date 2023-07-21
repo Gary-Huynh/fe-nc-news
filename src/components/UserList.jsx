@@ -9,9 +9,10 @@ import { getUsers } from "../../api";
 const UserList = ()=>{
 const [users, setUsers] = useState([])
 const {user, setUser} = useContext(UserContext)
-const[error, setError] = useState(false)
+const [error, setError] = useState(false)
 const [isLoading, setIsLoading] =useState(true)
-
+const [loginUser, setLoginUser] = useState({user:""})
+const [clickedLogin, setClickedLogin] =useState(false)
 
     useEffect(()=>{
         setIsLoading(true)
@@ -29,6 +30,23 @@ const [isLoading, setIsLoading] =useState(true)
     
         })
     },[])
+
+
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+        setClickedLogin(true)
+        users.map((singleUser)=>{
+            if(loginUser.user === (singleUser).username){
+                setUser((singleUser).username)
+            alert("Login successful")
+            setClickedLogin(false)}
+
+            
+        })
+        setLoginUser({user:""})
+    }
+
+
     if(isLoading) {return <h1>Loading now...</h1>}
     if(error){return <h1>Something went wrong try again later 🙄</h1>}
     
@@ -36,20 +54,35 @@ return(
     <main >
         <h3 className="userProfile">User Profiles</h3>
 
-        {users.map((user)=>{
+        <form  onSubmit={handleSubmit}>
+            <label id="userLabel" htmlFor="enterUsername">{user===null? "Please enter your Username" : "Change user?"}</label>
+            <input id="enterUsername" 
+            value={loginUser.user}
+            onChange={((e)=>{
+            setLoginUser({user:e.target.value})})}
+             required></input>
+            <button id="deleteButton">Submit</button>
+        </form>
+
+        {clickedLogin? <p>Login failed</p>  : null}
+
+
+
+
+        
+        {users.map((singleUser)=>{
+
+            if (singleUser.username === user){
             return( 
-            <section className="user" key={user.username} >
-            <h2>Username: {user.username}</h2>
-            <h3>Full Name: {user.name}</h3>
-            <button className="userButton" onClick={()=>{
-                setUser(user.username)
-                alert(`logged in as ${user.username}`)
-            }}>Login
-            </button>
-            <img className="image" width="250px"src={user.avatar_url}/>
+            <section className="user" key={singleUser.username} >
+            <h2>Username: {singleUser.username}</h2>
+            <h3>Full Name: {singleUser.name}</h3>
+
+            <img className="image" width="250px"src={singleUser.avatar_url}/>
 
             </section>
-            )
+            )}
+            else{ return null}
         })}
     </main>
 )
