@@ -55,6 +55,8 @@ const handleClick = (e)=>{
 }
 
 
+
+
 if(apiError){
     return(
         <main>
@@ -68,6 +70,8 @@ if(isLoading) {return <h1>Loading now...</h1>}
 if(error){return <h1>Something went wrong try again later 🙄</h1>}
     return(
         <article>
+
+
 
         <h2 id="articleTitle">{article.title}</h2>
         <img className="articleImage"  src={article.article_img_url} alt="image describing the article"/>

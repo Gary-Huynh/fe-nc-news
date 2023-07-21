@@ -281,3 +281,34 @@ textarea {
   margin-right: 2rem;
   margin-bottom: 0.5rem;
 }
+
+.postArticleForm{
+  background-color:rgba(101, 135, 34, 0.106);
+display:flex;
+justify-content: center;
+align-items: center;
+
+  color: white;
+
+  font-size: 1.2rem;
+}
+
+.selectOption{
+  color:black
+}
+#postArticleTitle {
+  margin-left: 22rem;
+}
+
+#postArticleTopic{
+  margin-left: 22rem;
+}
+
+#labelForArticleBody {
+  margin-left:1.3rem
+}
+
+#postArticleBody{
+  display:block;
+  margin-left: 22rem;
+}

@@ -82,3 +82,17 @@ export const getArticlesLatestFive = ()=>{
         return res.data
     })
 }
+
+export const postArticle = (article) =>{
+
+    const articlePostBody = {
+        author:article.author,
+        body:article.body,
+        topic:article.topic,
+        title:article.title
+    }
+    console.log(articlePostBody)
+    return newsApi.post(`/articles`,articlePostBody).then((res)=>{
+        return res.data
+    })
+}

@@ -14,6 +14,7 @@ const [isLoading, setIsLoading] =useState(true)
 const [loginUser, setLoginUser] = useState({user:""})
 const [clickedLogin, setClickedLogin] =useState(false)
 
+
     useEffect(()=>{
         setIsLoading(true)
         setError(true)
@@ -56,7 +57,7 @@ return(
 
         <form  onSubmit={handleSubmit}>
             <label id="userLabel" htmlFor="enterUsername">{user===null? "Please enter your Username" : "Change user?"}</label>
-            <input placeholder="tickle122" id="enterUsername" 
+            <input placeholder="use tickle122" id="enterUsername" 
             value={loginUser.user}
             onChange={((e)=>{
             setLoginUser({user:e.target.value})})}
