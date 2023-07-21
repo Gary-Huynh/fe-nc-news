@@ -1,8 +1,8 @@
 const Error =({errorStatus, errorMessage}) =>{
     return(
         <main className="error">
-            <p>Something went wrong error code: {errorStatus}</p>
-            <p>{errorMessage}</p>
+            <h1>Something went wrong error code: {errorStatus}</h1>
+            <h1>{errorMessage}</h1>
         </main>
     )
 }

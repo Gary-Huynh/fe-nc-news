@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import { getArticle, patchArticle } from "../../api";
 import Comments from "./Comments";
-import { UserContext } from "../contexts/UserContext";
 
 const Article = () =>{
-const {user} = useContext(UserContext)
+
 
 const [article, setArticle] = useState();
 const article_id = useParams();
@@ -57,8 +56,8 @@ const handleClick = (e)=>{
 if(apiError){
     return(
         <main>
-            <p>{apiError.response.status}</p>
-            <p>{apiError.response.data.msg}</p>
+            <h1>{apiError.response.status}</h1>
+            <h1>{apiError.response.data.msg}</h1>
         </main>
     )
 }

@@ -115,8 +115,8 @@ return (
         {justTopicName.includes(topic.topic_name)===false ? <h1>Topic Does Not Exist!</h1>:null}
         <div className="articleGrid">
         {articles.map((article)=>{
-
-            return  <SingleArticle key={article.article_id}  article={article}/>
+                if(article.topic===topic.topic_name){
+            return  <SingleArticle key={article.article_id}  article={article}/>}
         })
         }
         </div>
