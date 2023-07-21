@@ -56,7 +56,7 @@ return(
 
         <form  onSubmit={handleSubmit}>
             <label id="userLabel" htmlFor="enterUsername">{user===null? "Please enter your Username" : "Change user?"}</label>
-            <input id="enterUsername" 
+            <input placeholder="tickle122" id="enterUsername" 
             value={loginUser.user}
             onChange={((e)=>{
             setLoginUser({user:e.target.value})})}
