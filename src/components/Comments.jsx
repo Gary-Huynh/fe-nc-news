@@ -26,8 +26,10 @@ const Comments = ({article_id})=>{
         })
         .catch(err=>{
             setIsLoading(false)
-            setError(true)
-        })
+            setError(false)
+            if (err.response.status !== 404){
+            setError(true)}
+            })
     },[submit,deleted])
 const handleSubmit = (e)=>{
         e.preventDefault()
@@ -73,7 +75,6 @@ const handleClick = (comment)=>{
 }
 
     if(isLoading) {return <h1>Loading now...</h1>}
-    if(comments.length === 0){return <h3>no comments ☹</h3>}
     if(error){return <h1>Something went wrong try again later 🙄</h1>}
 
 return(
@@ -93,22 +94,23 @@ return(
         {submit? <p>message posted!</p>:null}
         </form>
         <Expand description={"comments"}>
-    {comments.map((comment)=>{
-        return( 
-        <section className="singleComment" key={comment.comment_id}>
-            <p id="commentBody">{comment.body}</p>
-            <p className="commentAttributes">Posted by {comment.author}</p>
-            <p className="commentAttributes">❤ {comment.votes}</p>
-            <p className="commentAttributes">Posted at: {comment.created_at}</p>
-            <button id="deleteButton" disabled={comment.author !== user} onClick={(e)=>{
-                handleClick(comment)
+        {comments.length===0 ? <h3>no comments ☹</h3>:comments.map((comment)=>{
+            return( 
+            <section className="singleComment" key={comment.comment_id}>
+                <p id="commentBody">{comment.body}</p>
+                <p className="commentAttributes">Posted by {comment.author}</p>
+                <p className="commentAttributes">❤ {comment.votes}</p>
+                <p className="commentAttributes">Posted at: {comment.created_at}</p>
+                <button id="deleteButton" disabled={comment.author !== user} onClick={(e)=>{
+                    handleClick(comment)
 
 
-            }} comment={comment}> Delete Comment</button>
-        </section>)
+                }} comment={comment}> Delete Comment</button>
+            </section>)
 
-    })}
-    </Expand>
+            })}
+
+        </Expand>
     </section>
 )
 
