@@ -154,6 +154,7 @@ nav a:hover {
   margin-left: 44rem;
   margin-bottom: 2rem;
   text-align: center;
+  margin-top: 1rem
 }
 #postButton{
   display:flex;
@@ -311,4 +312,9 @@ align-items: center;
 #postArticleBody{
   display:block;
   margin-left: 22rem;
+}
+
+.postUser{
+  background-color:rgba(101, 135, 34, 0.106);
+  margin-right:1.5rem
 }

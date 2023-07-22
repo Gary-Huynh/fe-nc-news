@@ -106,3 +106,16 @@ export const deleteArticle = (article_id)=>{
 
 
 }
+
+export const postUser = (newUser)=>{
+    console.log(newUser, "newUser here")
+    const newUserBody = {
+        username: newUser.username,
+        name: newUser.name,
+        avatar_url: newUser.avatar_url
+    }
+    return newsApi.post("/users", newUserBody).then((res)=>{
+        console.log(res)
+        return res.data
+    })
+}
