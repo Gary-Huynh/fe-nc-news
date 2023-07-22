@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom"
-import { getArticle, patchArticle } from "../../api";
+import { deleteArticle, getArticle, patchArticle } from "../../api";
 import Comments from "./Comments";
 import { UserContext } from "../contexts/UserContext";
 
@@ -15,6 +15,7 @@ const [userVotes, setUserVotes] =useState(0);
 const [voteError, setVoteError] = useState(false);
 const [apiError, setApiError] = useState(null);
 const {user} = useContext(UserContext)
+const [deleted, setDeleted] = useState(false)
 
 useEffect(()=>{
     setIsLoading(true)
@@ -54,7 +55,17 @@ const handleClick = (e)=>{
             })
 }
 
+const handleDeleteClick = ()=>{
 
+    deleteArticle(article.article_id)
+    .then((res)=>{
+        setDeleted(true)
+    })
+
+    .catch(err=>{
+        setError(true)
+    })  
+}
 
 
 if(apiError){
@@ -90,6 +101,9 @@ if(error){return <h1>Something went wrong try again later 🙄</h1>}
 
         {voteError? <p>Error please try again later</p> : null}
 
+
+        <button onClick={(e)=>{handleDeleteClick(article.article_id)}} disabled={user !== article.author}>Delete Article</button>
+        {deleted? <h2>Article deleted</h2>:null}
         <br/> <br/> <br/> <br/>
 
 
