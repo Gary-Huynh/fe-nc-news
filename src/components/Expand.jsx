@@ -3,7 +3,7 @@ import { useState } from "react"
 
 
 const Expand = ({children, description}) =>{
-const [showing, setShowing] = useState(true)
+const [showing, setShowing] = useState(false)
 
 const handleClick = ()=>{
     setShowing((currShowing)=>{
@@ -13,7 +13,7 @@ const handleClick = ()=>{
 
     return(
         <div>
-            <button onClick={handleClick}> {showing? "hide":"show"} {description}</button>
+            <button id="accountButton"  onClick={handleClick}> {showing? "Hide":"Show"} {description}</button>
         {showing? children:null}
         </div>
     )

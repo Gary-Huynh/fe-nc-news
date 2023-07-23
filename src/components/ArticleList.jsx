@@ -136,7 +136,7 @@ const [newArticle, setNewArticle] = useState({
             })} required></textarea>
     
 
-            <button id="deleteButton">Post Article</button>
+            <button id="deleteButton" disabled={user===null}>Post Article</button>
         </form>
 
         </section>

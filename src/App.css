@@ -318,3 +318,7 @@ align-items: center;
   background-color:rgba(101, 135, 34, 0.106);
   margin-right:1.5rem
 }
+
+#accountButton{
+  margin-bottom: 1.5rem;
+}

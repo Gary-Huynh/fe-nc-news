@@ -2,7 +2,7 @@
 import { useEffect, useState, useContext } from "react"
 import { UserContext } from "../contexts/UserContext";
 import { getUsers, postUser } from "../../api";
-
+import Expand from "./Expand";
 
 
 
@@ -90,9 +90,11 @@ return(
 
 
 
+                <br/><br/><br/><br/><br/>
 
     <section >
         {user === null? 
+            <Expand description="Account Creation">
         <form  onSubmit={handleNewUserSubmit}>
         <label  htmlFor="postUserUsername"> Username: </label>
 
@@ -112,8 +114,9 @@ return(
         })} required ></input>
 
 
-        <button id="deleteButton">Make Account</button>
+        <button id="deleteButton">Create Account</button>
         </form>
+        </Expand>
             :null}
     </section>
 
