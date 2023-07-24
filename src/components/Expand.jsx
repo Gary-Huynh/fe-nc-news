@@ -3,7 +3,7 @@ import { useState } from "react"
 
 
 const Expand = ({children, description}) =>{
-const [showing, setShowing] = useState(false)
+const [showing, setShowing] = useState(true)
 
 const handleClick = ()=>{
     setShowing((currShowing)=>{

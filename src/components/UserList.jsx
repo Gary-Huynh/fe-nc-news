@@ -35,8 +35,15 @@ const [newUserSubmit, setNewUserSubmit] = useState(false)
             setError(true)
     
         })
-    },[newUserSubmit])
+    },[user])
 
+    useEffect(() => {
+        const loggedInUser = localStorage.getItem("user");
+        if (loggedInUser) {
+          const foundUser = JSON.parse(loggedInUser);
+          setUser(foundUser);
+        }
+      }, []);
 
     const handleSubmit = (e) =>{
         e.preventDefault()
@@ -44,6 +51,7 @@ const [newUserSubmit, setNewUserSubmit] = useState(false)
         users.map((singleUser)=>{
             if(loginUser.user === (singleUser).username){
                 setUser((singleUser).username)
+                localStorage.setItem("user", JSON.stringify(singleUser.username))
             alert("Login successful")
             setClickedLogin(false)}
 
@@ -68,6 +76,9 @@ const [newUserSubmit, setNewUserSubmit] = useState(false)
         })
 
     }
+
+   
+
 
     if(isLoading) {return <h1>Loading now...</h1>}
     if(error){return <h1>Something went wrong try again later 🙄</h1>}

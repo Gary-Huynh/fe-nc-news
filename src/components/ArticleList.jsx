@@ -75,7 +75,6 @@ const [newArticle, setNewArticle] = useState({
         })
     }
 
-
     if(isLoading) {return <h1>Loading now...</h1>}
     if(error){return <h1>Something went wrong try again later 🙄</h1>}
 
