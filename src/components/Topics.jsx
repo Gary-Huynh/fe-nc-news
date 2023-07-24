@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom"
 import { getArticles,getArticlesSorted, getTopics } from "../../api"
 import SingleArticle from "./SingleArticle";
-import TopicList from "./TopicsList";
+
+import { UserContext } from "../contexts/UserContext";
 
 
 
@@ -10,7 +11,7 @@ import TopicList from "./TopicsList";
 const Topic = ()=>{
 const topic = useParams();
 
-
+const {user, setUser} = useContext(UserContext)
 const [isLoading, setIsLoading] =useState(true)
 const [articles, setArticles] =useState([])
 const[error, setError] = useState(false)
@@ -77,6 +78,14 @@ const [apiError, setApiError] = useState(false)
 const justTopicName = topics.map((topic)=>{
     return topic.slug
 })
+
+useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+    }
+  }, []);
 
 if(apiError){return <h1>Topic does not exist!</h1>}
 if(isLoading) {return <h1>Loading now...</h1>}

@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { getTopics } from "../../api"
 import { Link } from "react-router-dom"
-
+import { UserContext } from "../contexts/UserContext";
 
 
 
 const TopicList = ()=>{
 const [isLoading, setIsLoading] =useState(true)
+const {user, setUser} = useContext(UserContext)
 const [topics, setTopics] = useState([])
 const[error, setError] = useState(false)
 
@@ -29,6 +30,16 @@ useEffect(()=>{
     })
     
 },[])
+
+useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+    }
+  }, []);
+
+
 
 if(isLoading) {return <h1>Loading now...</h1>}
 if(error){return <h1>Something went wrong try again later 🙄</h1>}

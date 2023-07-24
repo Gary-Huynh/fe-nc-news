@@ -8,7 +8,7 @@ import SingleArticle from "./SingleArticle"
 
 const Home = ()=>{
 const [articles, setArticles] = useState([])
-const {user} = useContext(UserContext)
+const {user, setUser} = useContext(UserContext)
 const [isLoading, setIsLoading] = useState(true)
 const[error, setError] = useState(false)
 
@@ -32,6 +32,14 @@ useEffect(()=>{
 
 
 },[])
+
+useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+    }
+  }, []);
 
 if(isLoading) {return <h1>Loading now...</h1>}
 if(error){return <h1>Something went wrong try again later 🙄</h1>}

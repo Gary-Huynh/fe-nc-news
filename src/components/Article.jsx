@@ -14,7 +14,7 @@ const[error, setError] = useState(false);
 const [userVotes, setUserVotes] =useState(0);
 const [voteError, setVoteError] = useState(false);
 const [apiError, setApiError] = useState(null);
-const {user} = useContext(UserContext)
+const {user, setUser} = useContext(UserContext)
 const [deleted, setDeleted] = useState(false)
 
 useEffect(()=>{
@@ -67,7 +67,13 @@ const handleDeleteClick = ()=>{
     })  
 }
 
-
+useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+    }
+  }, []);
 if(apiError){
     return(
         <main>

@@ -5,7 +5,7 @@ import { UserContext } from "../contexts/UserContext";
 import Expand from "./Expand";
 
 const ArticleList = ()=>{
-const {user,} = useContext(UserContext)
+const {user, setUser} = useContext(UserContext)
 const [articles, setArticles] = useState([])
 const [isLoading, setIsLoading] = useState(true)
 const[error, setError] = useState(false)
@@ -40,6 +40,14 @@ const [newArticle, setNewArticle] = useState({
 
 
     },[])
+
+    useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+    }
+  }, []);
 
     const handleClick = (e)=>{
         let sortBy = ""
