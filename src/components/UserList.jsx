@@ -35,7 +35,7 @@ const [newUserSubmit, setNewUserSubmit] = useState(false)
             setError(true)
     
         })
-    },[user])
+    },[user,clickedLogin, newUserSubmit])
 
     useEffect(() => {
         const loggedInUser = localStorage.getItem("user");
@@ -53,7 +53,9 @@ const [newUserSubmit, setNewUserSubmit] = useState(false)
                 setUser((singleUser).username)
                 localStorage.setItem("user", JSON.stringify(singleUser.username))
             alert("Login successful")
+
             setClickedLogin(false)}
+
 
             
         })
@@ -124,14 +126,17 @@ return(
         setNewUser({  ...newUser,  avatar_url:e.target.value})
         })} required ></input>
 
-
+        
         <button id="deleteButton">Create Account</button>
         </form>
         </Expand>
             :null}
     </section>
+        {user===null? null:<button onClick={()=>{
+            setUser(null)
+            localStorage.setItem("user", null)
+        }}>Logout</button>}
 
-        
         {users.map((singleUser)=>{
 
             if (singleUser.username === user){

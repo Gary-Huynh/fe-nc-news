@@ -322,3 +322,7 @@ align-items: center;
 #accountButton{
   margin-bottom: 1.5rem;
 }
+.postUser{
+  color:white;
+  font-size: 1rem;
+}
